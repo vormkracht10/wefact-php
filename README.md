@@ -8,6 +8,9 @@
 
 This package provides a fluent interface to communicate with the WeFact API. For the full documentation of the WeFact API, please visit [https://www.wefact.nl/api/](https://www.wefact.nl/api/).
 
+<details>
+<summary>Table of Contents</summary>
+
 -   [Minimum requirements](#minimum-requirements)
 -   [Installation](#installation)
 -   [Usage](#usage)
@@ -70,6 +73,7 @@ This package provides a fluent interface to communicate with the WeFact API. For
 -   [Security Vulnerabilities](#security-vulnerabilities)
 -   [Credits](#credits)
 -   [License](#license)
+</details>
 
 ## Minimum requirements
 
