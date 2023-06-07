@@ -3,6 +3,7 @@
 namespace Vormkracht10\WeFact;
 
 use GuzzleHttp\Client;
+use Vormkracht10\WeFact\Resources\Debtor;
 use Vormkracht10\WeFact\Resources\Invoice;
 
 class WeFact
@@ -39,6 +40,15 @@ class WeFact
     public function invoice(): Invoice
     {
         return new Invoice(
+            $this->http,
+            $this->apiKey,
+            $this->apiUrl
+        );
+    }
+
+    public function debtor(): Debtor
+    {
+        return new Debtor(
             $this->http,
             $this->apiKey,
             $this->apiUrl
