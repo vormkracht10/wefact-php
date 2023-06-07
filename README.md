@@ -8,6 +8,7 @@
 
 This package provides a fluent interface to communicate with the WeFact API.
 
+-   [Minimum requirements](#minimum-requirements)
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Available methods](#available-methods)
