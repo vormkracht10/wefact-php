@@ -6,7 +6,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
 
-This package rovides a fluent interface to communicate with the WeFact API.
+This package provides a fluent interface to communicate with the WeFact API.
 
 -   [Installation](#installation)
 -   [Usage](#usage)
