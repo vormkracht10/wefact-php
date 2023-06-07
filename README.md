@@ -45,8 +45,18 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Update invoice](#update-invoice)
         -   [Show invoice](#show-invoice)
         -   [Delete invoice](#delete-invoice)
+        -   [Credit](#credit)
+        -   [Part payment](#part-payment)
         -   [Mark as paid](#mark-as-paid)
         -   [Mark as unpaid](#mark-as-unpaid)
+        -   [Send by email](#send-by-email)
+        -   [Send reminder by email](#send-reminder-by-email)
+        -   [Send summation by email](#send-summation-by-email)
+        -   [Download](#download)
+        -   [Block](#block)
+        -   [Unblock](#unblock)
+        -   [Schedule](#schedule)
+        -   [Cancel schedule](#cancel-schedule)
     -   [Product](#product)
         -   [List products](#list-products)
         -   [Create product](#create-product)
@@ -362,6 +372,26 @@ $weFact->invoice()->delete(['Identifier' => $invoiceId]);
 $weFact->invoice()->delete(['InvoiceCode' => $invoiceCode]);
 ```
 
+#### Credit
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->credit(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->credit(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Part payment
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->partPayment(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->partPayment(['InvoiceCode' => $invoiceCode]);
+```
+
 #### Mark invoice as paid
 
 Required parameter: `Identifier` or `InvoiceCode`.
@@ -380,6 +410,82 @@ Required parameter: `Identifier` or `InvoiceCode`.
 $weFact->invoice()->markAsUnpaid(['Identifier' => $invoiceId]);
 // or
 $weFact->invoice()->markAsUnpaid(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Send by email
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->sendByEmail(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->sendByEmail(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Send reminder by email
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->sendReminderByEmail(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->sendReminderByEmail(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Download
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->download(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->download(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Block
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->block(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->block(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Unblock
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->unblock(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->unblock(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Schedule
+
+Required parameter: `Identifier` or `InvoiceCode` and `ScheduledAt`.
+
+```php
+$weFact->invoice()->schedule([
+    'Identifier' => $invoiceId,
+    'ScheduledAt' => '2020-01-01 00:00:00'
+  ])
+// or
+$weFact->invoice()->schedule([
+    'InvoiceCode' => $invoiceCode,
+    'ScheduledAt' => '2020-01-01 00:00:00'
+  ])
+```
+
+#### Cancel schedule
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->cancelSchedule(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->cancelSchedule(['InvoiceCode' => $invoiceCode]);
 ```
 
 ### Product

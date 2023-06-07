@@ -23,25 +23,148 @@ class Invoice extends Resource
         return self::CONTROLLER_NAME;
     }
 
-    public function markAsPaid(array $params = []): array|InvalidRequestException
+    /** 
+     * @param  array<string, mixed>  $params 
+     * @return array<string, mixed>|InvalidRequestException
+    */
+    public function send(string $action, array $params): array|InvalidRequestException
     {
-        $controller = $this->getResourceName();
-
-        return $this->sendRequest(
-            controller: $controller,
-            action: InvoiceAction::MARK_AS_PAID->value,
+        return parent::sendRequest(
+            controller: $this->getResourceName(),
+            action: $action,
             params: $params
         );
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function credit(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::CREDIT->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function partPayment(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::PART_PAYMENT->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function markAsPaid(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::MARK_AS_PAID->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
     public function markAsUnpaid(array $params = []): array|InvalidRequestException
     {
-        $controller = $this->getResourceName();
+        return $this->send(action: InvoiceAction::MARK_AS_UNPAID->value, params: $params);
+    }
 
-        return $this->sendRequest(
-            controller: $controller,
-            action: InvoiceAction::MARK_AS_UNPAID->value,
-            params: $params
-        );
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function sendByEmail(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::SEND_BY_EMAIL->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function sendReminderByEmail(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::SEND_REMINDER_BY_EMAIL->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function sendSummationByEmail(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::SEND_SUMMATION_BY_EMAIL->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function download(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::DOWNLOAD->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function block(array $params = []): array|InvalidRequestException
+    {
+        return $this->send(action: InvoiceAction::BLOCK->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function unblock(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::UNBLOCK->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function schedule(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::SCHEDULE->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function cancelSchedule(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::CANCEL_SCHEDULE->value, params: $params);
     }
 }
