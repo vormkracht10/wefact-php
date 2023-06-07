@@ -6,7 +6,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
 
-This package provides a fluent interface to communicate with the WeFact API.
+This package provides a fluent interface to communicate with the WeFact API. For the full documentation of the WeFact API, please visit [https://www.wefact.nl/api/](https://www.wefact.nl/api/).
 
 -   [Minimum requirements](#minimum-requirements)
 -   [Installation](#installation)
@@ -66,8 +66,6 @@ $invoices = $weFact->invoice()->list();
 ```
 
 ## Available methods
-
-For the full documentation of the WeFact API, please visit [https://www.wefact.nl/api/](https://www.wefact.nl/api/).
 
 ### Debtor
 
