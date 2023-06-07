@@ -22,7 +22,6 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @param Action  $action
      * @return array<string, mixed>|InvalidRequestException
      *
      * @throws InvalidRequestException
