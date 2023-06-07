@@ -9,12 +9,12 @@ use Vormkracht10\WeFact\Traits\Request;
 abstract class Resource
 {
     use Request;
-    
+
     public function __construct(
         protected Client $http,
         protected string $apiKey,
         protected string $apiUrl
-    ){
+    ) {
         $this->http = $http;
     }
 
@@ -87,7 +87,7 @@ abstract class Resource
     public function delete(int $id, array $params = []): array
     {
         $params['Identifier'] = $id;
-        
+
         $controller = $this->getResourceName();
 
         return $this->sendRequest(
