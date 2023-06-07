@@ -23,7 +23,7 @@ trait Request
         ]);
 
         $body = $response->getBody();
-        $responseData = json_decode($body, true);
+        $responseData = json_decode((string) $body, true, 512, JSON_THROW_ON_ERROR);
 
         if ($responseData['status'] === 'error') {
             throw new InvalidRequestException($responseData['errors'][0]);

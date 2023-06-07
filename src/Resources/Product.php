@@ -4,7 +4,7 @@ namespace Vormkracht10\WeFact\Resources;
 
 class Product extends Resource
 {
-    public const CONTROLLER_NAME = 'product';
+    final public const CONTROLLER_NAME = 'product';
 
     public function getResourceName(): string
     {

@@ -6,7 +6,7 @@ use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 
 class Debtor extends Resource
 {
-    public const CONTROLLER_NAME = 'debtor';
+    final public const CONTROLLER_NAME = 'debtor';
 
     public function getResourceName(): string
     {

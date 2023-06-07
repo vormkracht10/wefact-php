@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 
 class Invoice extends Resource
 {
-    public const CONTROLLER_NAME = 'invoice';
+    final public const CONTROLLER_NAME = 'invoice';
 
     public function __construct(
         protected Client $http,
