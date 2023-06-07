@@ -1,18 +1,26 @@
-# PHP package to provide a fluent interface to communicate with WeFact
+# PHP package for WeFact
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vormkracht10/wefact-php)
+[![Tests](https://github.com/vormkracht10/wefact-php/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/wefact-php/actions/workflows/run-tests.yml)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/vormkracht10/wefact-php)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
-[![Tests](https://img.shields.io/github/actions/workflow/status/vormkracht10/wefact-php/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vormkracht10/wefact-php/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/wefact-php.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/wefact-php)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+This package rovides a fluent interface to communicate with the WeFact API.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/wefact-php.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/wefact-php)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [Available methods](#available-methods)
+    -   [Invoice](#invoice)
+        -   [List invoices](#list-invoices)
+        -   [Show invoice](#show-invoice)
+        -   [Delete invoice](#delete-invoice)
+-   [Testing](#testing)
+-   [Changelog](#changelog)
+-   [Contributing](#contributing)
+-   [Security Vulnerabilities](#security-vulnerabilities)
+-   [Credits](#credits)
+-   [License](#license)
 
 ## Installation
 
@@ -24,9 +32,38 @@ composer require vormkracht10/wefact-php
 
 ## Usage
 
+Then you can use the package like this:
+
 ```php
-$skeleton = new Vormkracht10\WeFact();
-echo $skeleton->echoPhrase('Hello, Vormkracht10!');
+$weFact = new Vormkracht10\WeFact('your-api-key');
+
+$invoices = $weFact->invoice()->list();
+```
+
+## Available methods
+
+### Invoice
+
+#### List invoices
+
+```php
+$weFact->invoice()->list();
+```
+
+#### Show invoice
+
+```php
+$weFact->invoice()->show($invoiceId);
+// or
+$weFact->invoice()->showByInvoiceCode($invoiceCode);
+```
+
+#### Delete invoice
+
+```php
+$weFact->invoice()->delete($invoiceId);
+// or
+$weFact->invoice()->deleteByInvoiceCode($invoiceCode);
 ```
 
 ## Testing
@@ -41,7 +78,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
@@ -49,8 +86,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Bas van Dinther](https://github.com/vormkracht10)
-- [All Contributors](../../contributors)
+-   [Bas van Dinther](https://github.com/vormkracht10)
+-   [All Contributors](../../contributors)
 
 ## License
 
