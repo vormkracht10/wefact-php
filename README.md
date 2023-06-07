@@ -12,6 +12,7 @@ This package provides a fluent interface to communicate with the WeFact API. For
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Available methods](#available-methods)
+
     -   [Creditor](#creditor)
         -   [List creditors](#list-creditors)
         -   [Create creditor](#create-creditor)
@@ -47,11 +48,20 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Update product](#update-product)
         -   [Show product](#show-product)
         -   [Delete product](#delete-product)
+    -   [Settings](#settings)
+        -   [List settings](#list-settings)
+    -   [Settings - Cost Category](#settings---cost-category)
+        -   [List cost categories](#list-cost-categories)
+        -   [Create cost category](#create-cost-category)
+        -   [Update cost category](#update-cost-category)
+        -   [Show cost category](#show-cost-category)
+        -   [Delete cost category](#delete-cost-category)
     -   [Subscription](#subscription)
         -   [List subscriptions](#list-subscriptions)
         -   [Create subscription](#create-subscription)
         -   [Update subscription](#update-subscription)
         -   [Show subscription](#show-subscription)
+
 -   [Testing](#testing)
 -   [Changelog](#changelog)
 -   [Contributing](#contributing)
@@ -395,6 +405,58 @@ Required parameter: `Identifier` or `ProductCode`.
 $weFact->product()->delete(['Identifier' => $productId]);
 // or
 $weFact->product()->delete(['ProductCode' => $productCode]);
+```
+
+### Settings
+
+#### List settings
+
+```php
+$weFact->settings()->list();
+```
+
+### Settings - Cost Category
+
+#### List cost categories
+
+```php
+$weFact->costCategory()->list();
+```
+
+#### Create cost category
+
+Required parameters: `Title`.
+
+```php
+$weFact->costCategory()->create([
+    'Title' => 'Your cost category title',
+  ]);
+```
+
+#### Update cost category
+
+Required parameter: `Identifier`.
+
+```php
+$weFact->costCategory()->edit([
+  'Identifier' => $costCategoryId,
+]);
+```
+
+#### Show cost category
+
+Required parameter: `Identifier`.
+
+```php
+$weFact->costCategory()->show(['Identifier' => $costCategoryId]);
+```
+
+#### Delete cost category
+
+Required parameter: `Identifier`.
+
+```php
+$weFact->costCategory()->delete(['Identifier' => $costCategoryId]);
 ```
 
 ### Subscription

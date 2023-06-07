@@ -2,6 +2,7 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
+use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 
 class Subscription extends Resource
@@ -13,13 +14,7 @@ class Subscription extends Resource
         return self::CONTROLLER_NAME;
     }
 
-    /**
-     * @param  array<string, mixed>  $params
-     * @return MethodNotAvailableException|array<string, mixed>
-     *
-     * @throws MethodNotAvailableException
-     */
-    public function delete(array $params = []): MethodNotAvailableException|array
+    public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
     {
         throw new MethodNotAvailableException(
             sprintf('%s is not available for this resource.', __METHOD__)
