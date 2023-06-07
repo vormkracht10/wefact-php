@@ -23,10 +23,10 @@ class Invoice extends Resource
         return self::CONTROLLER_NAME;
     }
 
-    /** 
-     * @param  array<string, mixed>  $params 
+    /**
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>|InvalidRequestException
-    */
+     */
     public function send(string $action, array $params): array|InvalidRequestException
     {
         return parent::sendRequest(
@@ -142,7 +142,7 @@ class Invoice extends Resource
      * @throws InvalidRequestException
      */
     public function unblock(array $params = []): array|InvalidRequestException
-    {        
+    {
         return $this->send(action: InvoiceAction::UNBLOCK->value, params: $params);
     }
 
@@ -153,7 +153,7 @@ class Invoice extends Resource
      * @throws InvalidRequestException
      */
     public function schedule(array $params = []): array|InvalidRequestException
-    {        
+    {
         return $this->send(action: InvoiceAction::SCHEDULE->value, params: $params);
     }
 
@@ -164,7 +164,7 @@ class Invoice extends Resource
      * @throws InvalidRequestException
      */
     public function cancelSchedule(array $params = []): array|InvalidRequestException
-    {        
+    {
         return $this->send(action: InvoiceAction::CANCEL_SCHEDULE->value, params: $params);
     }
 
