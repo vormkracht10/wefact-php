@@ -84,6 +84,7 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Create subscription](#create-subscription)
         -   [Update subscription](#update-subscription)
         -   [Show subscription](#show-subscription)
+        -   [Terminate subscription](#terminate-subscription)
 
 -   [Testing](#testing)
 -   [Changelog](#changelog)
@@ -749,6 +750,14 @@ Required parameter: `Identifier`.
 
 ```php
 $weFact->subscription()->show(['Identifier' => $subscriptionId]);
+```
+
+#### Terminate subscription
+
+Required parameter: `Identifier`.
+
+```php
+$weFact->subscription()->terminate(['Identifier' => $subscriptionId]);
 ```
 
 ## Testing

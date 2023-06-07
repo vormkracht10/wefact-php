@@ -16,7 +16,6 @@ enum InvoiceAction: string
     case UNBLOCK = 'unblock';
     case SCHEDULE = 'schedule';
     case CANCEL_SCHEDULE = 'cancelschedule';
-
     case PAYMENT_PROCESS_PAUSE = 'paymentprocesspause';
     case PAYMENT_PROCESS_REACTIVATE = 'paymentprocessreactivate';
     case SORT_LINES = 'sortlines';
