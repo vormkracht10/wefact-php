@@ -4,8 +4,8 @@ namespace Vormkracht10\WeFact;
 
 use GuzzleHttp\Client;
 use Vormkracht10\WeFact\Resources\Debtor;
-use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Group;
+use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Product;
 
 class WeFact
