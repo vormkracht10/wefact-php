@@ -23,7 +23,7 @@ class Invoice extends Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function showByInvoiceCode(string $invoiceCode, array $params = []): array
@@ -38,7 +38,7 @@ class Invoice extends Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function deleteByInvoiceCode(string $invoiceCode, array $params = []): array
