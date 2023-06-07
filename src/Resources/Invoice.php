@@ -231,6 +231,7 @@ class Invoice extends Resource
      */
     public function attachmentAdd(array $params = []): array|InvalidRequestException
     {
+        $params['Type'] = $this->getResourceName();
         return $this->send(action: InvoiceAction::ATTACHMENT_ADD->value, params: $params);
     }
 
@@ -242,6 +243,7 @@ class Invoice extends Resource
      */
     public function attachmentDelete(array $params = []): array|InvalidRequestException
     {
+        $params['Type'] = $this->getResourceName();
         return $this->send(action: InvoiceAction::ATTACHMENT_DELETE->value, params: $params);
     }
 
@@ -253,6 +255,7 @@ class Invoice extends Resource
      */
     public function attachmentDownload(array $params = []): array|InvalidRequestException
     {
+        $params['Type'] = $this->getResourceName();
         return $this->send(action: InvoiceAction::ATTACHMENT_DOWNLOAD->value, params: $params);
     }
 }
