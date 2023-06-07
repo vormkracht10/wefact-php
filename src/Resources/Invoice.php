@@ -22,6 +22,10 @@ class Invoice extends Resource
         return self::CONTROLLER_NAME;
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function showByInvoiceCode(string $invoiceCode, array $params = []): array
     {
         $params['InvoiceCode'] = $invoiceCode;
@@ -33,6 +37,10 @@ class Invoice extends Resource
         );
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function deleteByInvoiceCode(string $invoiceCode, array $params = []): array
     {
         $params['InvoiceCode'] = $invoiceCode;

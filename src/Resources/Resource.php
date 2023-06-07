@@ -12,21 +12,31 @@ abstract class Resource
     
     public function __construct(
         protected Client $http,
+        protected string $apiKey,
+        protected string $apiUrl
     ){
         $this->http = $http;
     }
 
-    public function list(array $parameters = []): array
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
+    public function list(array $params = []): array
     {
         $controller = $this->getResourceName();
 
         return $this->sendRequest(
             controller: $controller,
             action: Action::LIST->value,
-            params: $parameters
+            params: $params
         );
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function show(int $id, array $params = []): array
     {
         $params['Identifier'] = $id;
@@ -40,6 +50,10 @@ abstract class Resource
         );
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function create(array $params): array
     {
         $controller = $this->getResourceName();
@@ -51,6 +65,10 @@ abstract class Resource
         );
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function edit(array $params): array
     {
         $controller = $this->getResourceName();
@@ -62,6 +80,10 @@ abstract class Resource
         );
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
     public function delete(int $id, array $params = []): array
     {
         $params['Identifier'] = $id;
