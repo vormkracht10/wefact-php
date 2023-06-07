@@ -1,12 +1,10 @@
 <?php
 
-use GuzzleHttp\Psr7\Response;
-use Vormkracht10\WeFact\WeFact;
-use Vormkracht10\WeFact\Resources\Group;
 use Vormkracht10\WeFact\Resources\Debtor;
+use Vormkracht10\WeFact\Resources\Group;
 use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Product;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Vormkracht10\WeFact\WeFact;
 
 it('can create wefact instance', function () {
     $apiKey = 'FAKE_API_KEY';
