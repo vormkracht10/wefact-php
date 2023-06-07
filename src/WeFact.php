@@ -3,10 +3,13 @@
 namespace Vormkracht10\WeFact;
 
 use GuzzleHttp\Client;
-use Vormkracht10\WeFact\Resources\Debtor;
 use Vormkracht10\WeFact\Resources\Group;
+use Vormkracht10\WeFact\Resources\Debtor;
 use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Product;
+use Vormkracht10\WeFact\Resources\Creditor;
+use Vormkracht10\WeFact\Resources\Subscription;
+use Vormkracht10\WeFact\Resources\CreditInvoice;
 
 class WeFact
 {
@@ -72,6 +75,33 @@ class WeFact
             $this->http,
             $this->apiKey,
             $this->apiUrl
+        );
+    }
+
+    public function creditor(): Creditor
+    {
+        return new Creditor(
+            $this->http,
+            $this->apiKey,
+            $this->apiUrl
+        );
+    }
+
+    public function creditInvoice(): CreditInvoice
+    {
+        return new CreditInvoice(
+            $this->http,
+            $this->apiKey,
+            $this->apiUrl,
+        );
+    }
+
+    public function subscription(): Subscription
+    {
+        return new Subscription(
+            $this->http,
+            $this->apiKey,
+            $this->apiUrl,
         );
     }
 }

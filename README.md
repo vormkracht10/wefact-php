@@ -12,6 +12,18 @@ This package provides a fluent interface to communicate with the WeFact API. For
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Available methods](#available-methods)
+    -   [Creditor](#creditor)
+        -   [List creditors](#list-creditors)
+        -   [Create creditor](#create-creditor)
+        -   [Update creditor](#update-creditor)
+        -   [Show creditor](#show-creditor)
+        -   [Delete creditor](#delete-creditor)
+    -   [Credit Invoice](#credit-invoice)
+        -   [List credit invoices](#list-credit-invoices)
+        -   [Create credit invoice](#create-credit-invoice)
+        -   [Update credit invoice](#update-credit-invoice)
+        -   [Show credit invoice](#show-credit-invoice)
+        -   [Delete credit invoice](#delete-credit-invoice)
     -   [Debtor](#debtor)
         -   [List debtors](#list-debtors)
         -   [Create debtor](#create-debtor)
@@ -35,6 +47,11 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Update product](#update-product)
         -   [Show product](#show-product)
         -   [Delete product](#delete-product)
+    -   [Subscription](#subscription)
+        -   [List subscriptions](#list-subscriptions)
+        -   [Create subscription](#create-subscription)
+        -   [Update subscription](#update-subscription)
+        -   [Show subscription](#show-subscription)
 -   [Testing](#testing)
 -   [Changelog](#changelog)
 -   [Contributing](#contributing)
@@ -67,9 +84,112 @@ $invoices = $weFact->invoice()->list();
 
 ## Available methods
 
-### Debtor
+### Creditor
 
-<!-- Show list, add and edit -->
+#### List creditors
+
+```php
+$weFact->creditor()->list();
+```
+
+#### Create creditor
+
+Required parameters: `CompanyName` or `SurName`.
+
+```php
+$weFact->creditor()->create([
+    'CompanyName' => 'Your company name',
+  ])
+```
+
+#### Update creditor
+
+Required parameter: `Identifier` or `CreditorCode`.
+
+```php
+$weFact->creditor()->edit([
+    'Identifier' => $creditorId,
+    'CompanyName' => 'Your company name',
+  ])
+```
+
+#### Show creditor
+
+Required parameter: `Identifier` or `CreditorCode`.
+
+```php
+$weFact->creditor()->show(['Identifier' => $creditorId]);
+// or
+$weFact->creditor()->show(['CreditorCode' => $creditorCode]);
+```
+
+#### Delete creditor
+
+Required parameter: `Identifier` or `CreditorCode`.
+
+```php
+$weFact->creditor()->delete(['Identifier' => $creditorId]);
+// or
+$weFact->creditor()->delete(['CreditorCode' => $creditorCode]);
+```
+
+### Credit Invoice
+
+#### List credit invoices
+
+```php
+$weFact->creditInvoice()->list();
+```
+
+#### Create credit invoice
+
+Required parameters: `InvoiceCode`, `Creditor` or `CreditorCode` and `InvoiceLines`.
+
+```php
+$weFact->creditInvoice()->create([
+    'InvoiceCode' => 'your-invoice-code',
+    'CreditorCode' => 'CD10001'
+    'InvoiceLines' => [
+        [
+            'Description' => 'Your description',
+            'PriceExcl' => 10,
+        ],
+    ],
+  ])
+```
+
+#### Update credit invoice
+
+Required parameter: `Identifier` or `CreditInvoiceCode`.
+
+```php
+$weFact->creditInvoice()->edit([
+    'Identifier' => $creditInvoiceId,
+    'Comment' => 'Your comment',
+  ])
+```
+
+#### Show credit invoice
+
+Required parameter: `Identifier` or `CreditInvoiceCode`.
+
+```php
+$weFact->creditInvoice()->show(['Identifier' => $creditInvoiceId]);
+// or
+$weFact->creditInvoice()->show(['CreditInvoiceCode' => $creditInvoiceCode]);
+```
+
+#### Delete credit invoice
+
+Required parameter: `Identifier` or `CreditInvoiceCode`.
+
+```php
+$weFact->creditInvoice()->delete(['Identifier' => $creditInvoiceId]);
+// or
+$weFact->creditInvoice()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
+```
+
+### Debtor
 
 #### List debtors
 
@@ -112,8 +232,12 @@ $weFact->debtor()->show(['DebtorCode' => $debtorCode]);
 
 #### List groups
 
+Required parameter: `Type`.
+
 ```php
-$weFact->group()->list();
+$weFact->group()->list([
+    'type' => 'debtor',
+]);
 ```
 
 #### Create group
@@ -271,6 +395,55 @@ Required parameter: `Identifier` or `ProductCode`.
 $weFact->product()->delete(['Identifier' => $productId]);
 // or
 $weFact->product()->delete(['ProductCode' => $productCode]);
+```
+
+### Subscription
+
+#### List subscriptions
+
+```php
+$weFact->subscription()->list();
+```
+
+#### Create subscription
+
+Required parameters: `Debtor` or `DebtorCode` and `ProductCode`. When `ProductCode` is empty, `Description`, `PriceExcl` and `Periodic` are required.
+
+> Please note: You can pass either the `TerminateAfter` or the `TerminationDate`, not both. The `TerminateAfter` includes the number of times the subscription has been billed in the past.
+
+```php
+$weFact->subscription()->create([
+    'DebtorCode' => 'DB10000',
+    'ProductCode' => 'P0001',
+    'Description' => 'Your product description',
+    'PriceExcl' => 100,
+    'Periodic' => 'month',
+    'TerminateAfter' => 12
+  ])
+```
+
+#### Update subscription
+
+Required parameter: `Identifier`.
+
+> Please note: You can pass either the `TerminateAfter` or the `TerminationDate`, not both. The `TerminateAfter` includes the number of times the subscription has been billed in the past.
+
+```php
+$weFact->subscription()->edit([
+    'Identifier' => $subscriptionId,
+    'Description' => 'Your product description',
+    'PriceExcl' => 100,
+    'Periodic' => 'month',
+    'TerminateAfter' => 12
+  ])
+```
+
+#### Show subscription
+
+Required parameter: `Identifier`.
+
+```php
+$weFact->subscription()->show(['Identifier' => $subscriptionId]);
 ```
 
 ## Testing
