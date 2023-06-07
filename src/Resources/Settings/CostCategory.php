@@ -3,10 +3,10 @@
 namespace Vormkracht10\WeFact\Resources\Settings;
 
 use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Traits\Request;
-use Vormkracht10\WeFact\Resources\Resource;
 use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
+use Vormkracht10\WeFact\Resources\Resource;
+use Vormkracht10\WeFact\Traits\Request;
 
 class CostCategory extends Resource
 {
