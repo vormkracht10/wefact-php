@@ -2,6 +2,10 @@
 
 All notable changes to `wefact-php` will be documented in this file.
 
+## v0.3.0 - 2023-06-07
+
+This release includes all remaining `Invoice` resource methods.
+
 ## v0.2.0 - 2023-06-07
 
 - Added default resource methods to all remaining resources (`CreditInvoice`, `Creditor`, `Subscription`)
