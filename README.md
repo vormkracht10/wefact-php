@@ -42,6 +42,8 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Update invoice](#update-invoice)
         -   [Show invoice](#show-invoice)
         -   [Delete invoice](#delete-invoice)
+        -   [Mark as paid](#mark-as-paid)
+        -   [Mark as unpaid](#mark-as-unpaid)
     -   [Product](#product)
         -   [List products](#list-products)
         -   [Create product](#create-product)
@@ -354,6 +356,26 @@ Required parameter: `Identifier` or `InvoiceCode`.
 $weFact->invoice()->delete(['Identifier' => $invoiceId]);
 // or
 $weFact->invoice()->delete(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Mark invoice as paid
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->markAsPaid(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->markAsPaid(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Mark invoice as unpaid
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->markAsUnpaid(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->markAsUnpaid(['InvoiceCode' => $invoiceCode]);
 ```
 
 ### Product
