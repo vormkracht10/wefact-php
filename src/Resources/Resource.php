@@ -4,8 +4,8 @@ namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
 use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Traits\Request;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
+use Vormkracht10\WeFact\Traits\Request;
 
 abstract class Resource
 {
@@ -84,6 +84,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>  $params
      * @return MethodNotAvailableException|array<string, mixed>
+     *
      * @throws MethodNotAvailableException
      */
     public function delete(array $params = []): MethodNotAvailableException|array

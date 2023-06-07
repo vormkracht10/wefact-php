@@ -14,8 +14,9 @@ class Debtor extends Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return MethodNotAvailableException|array<string, mixed>
+     *
      * @throws MethodNotAvailableException
      */
     public function delete(array $params = []): MethodNotAvailableException|array
