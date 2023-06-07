@@ -13,8 +13,7 @@ class WeFact
 
     public function __construct(
         protected string $apiKey
-    )
-    {
+    ) {
         $this->setHttpClient();
     }
 
