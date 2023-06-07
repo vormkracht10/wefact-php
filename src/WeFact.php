@@ -3,13 +3,13 @@
 namespace Vormkracht10\WeFact;
 
 use GuzzleHttp\Client;
-use Vormkracht10\WeFact\Resources\Group;
+use Vormkracht10\WeFact\Resources\CreditInvoice;
+use Vormkracht10\WeFact\Resources\Creditor;
 use Vormkracht10\WeFact\Resources\Debtor;
+use Vormkracht10\WeFact\Resources\Group;
 use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Product;
-use Vormkracht10\WeFact\Resources\Creditor;
 use Vormkracht10\WeFact\Resources\Subscription;
-use Vormkracht10\WeFact\Resources\CreditInvoice;
 
 class WeFact
 {
