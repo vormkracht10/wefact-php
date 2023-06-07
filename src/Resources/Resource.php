@@ -23,6 +23,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>|InvalidRequestException
+     *
      * @throws InvalidRequestException
      */
     public function list(array $params = []): array|InvalidRequestException
@@ -39,6 +40,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>|InvalidRequestException
+     *
      * @throws InvalidRequestException
      */
     public function show(int $id, array $params = []): array|InvalidRequestException
@@ -57,6 +59,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>|InvalidRequestException
+     *
      * @throws InvalidRequestException
      */
     public function create(array $params): array|InvalidRequestException
@@ -73,6 +76,7 @@ abstract class Resource
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>|InvalidRequestException
+     *
      * @throws InvalidRequestException
      */
     public function edit(array $params): array|InvalidRequestException
