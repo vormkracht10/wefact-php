@@ -84,10 +84,8 @@ abstract class Resource
      * @param array<string, mixed> $params
      * @return array<string, mixed>
      */
-    public function delete(int $id, array $params = []): array
+    public function delete(array $params = []): array
     {
-        $params['Identifier'] = $id;
-
         $controller = $this->getResourceName();
 
         return $this->sendRequest(

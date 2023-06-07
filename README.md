@@ -13,6 +13,8 @@ This package rovides a fluent interface to communicate with the WeFact API.
 -   [Available methods](#available-methods)
     -   [Invoice](#invoice)
         -   [List invoices](#list-invoices)
+        -   [Create invoice](#create-invoice)
+        -   [Update invoice](#update-invoice)
         -   [Show invoice](#show-invoice)
         -   [Delete invoice](#delete-invoice)
 -   [Testing](#testing)
@@ -42,6 +44,8 @@ $invoices = $weFact->invoice()->list();
 
 ## Available methods
 
+For the full documentation of the WeFact API, please visit [https://www.wefact.nl/api/](https://www.wefact.nl/api/).
+
 ### Invoice
 
 #### List invoices
@@ -50,20 +54,64 @@ $invoices = $weFact->invoice()->list();
 $weFact->invoice()->list();
 ```
 
-#### Show invoice
+#### Create invoice
+
+Required parameters: `DebtorCode` or `DebtorCode` and `InvoiceLines`.
 
 ```php
-$weFact->invoice()->show($invoiceId);
+$weFact->invoice()->create([
+    'DebtorCode' => 'DB10000',
+    'InvoiceLines' => [
+      [
+        'Number' => 1,
+        'ProductCode' => 'P0001'
+      ]
+    ],
+    [
+      'Description' => 'Your product description',
+      'PriceExcl' => 100
+    ]
+  ])
+```
+
+#### Update invoice
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->edit([
+    'Identifier' => $invoiceId,
+    'InvoiceLines' => [
+      [
+        'Number' => 1,
+        'ProductCode' => 'P0001'
+      ]
+    ],
+    [
+      'Description' => 'Your product description',
+      'PriceExcl' => 100
+    ]
+  ])
+```
+
+#### Show invoice
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->show(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->showByInvoiceCode($invoiceCode);
+$weFact->invoice()->show(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Delete invoice
 
+Required parameter: `Identifier` or `InvoiceCode`.
+
 ```php
-$weFact->invoice()->delete($invoiceId);
+$weFact->invoice()->delete(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->deleteByInvoiceCode($invoiceCode);
+$weFact->invoice()->delete(['InvoiceCode' => $invoiceCode]);
 ```
 
 ## Testing
