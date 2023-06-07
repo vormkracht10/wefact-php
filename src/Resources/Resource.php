@@ -19,7 +19,7 @@ abstract class Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function list(array $params = []): array
@@ -34,7 +34,7 @@ abstract class Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function show(int $id, array $params = []): array
@@ -51,7 +51,7 @@ abstract class Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function create(array $params): array
@@ -66,7 +66,7 @@ abstract class Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function edit(array $params): array
@@ -81,7 +81,7 @@ abstract class Resource
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function delete(array $params = []): array

@@ -5,7 +5,7 @@ namespace Vormkracht10\WeFact\Traits;
 trait Request
 {
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     public function sendRequest(string $controller, string $action, array $params): array
