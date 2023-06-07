@@ -2,6 +2,7 @@
 
 namespace Vormkracht10\WeFact\Traits;
 
+use Psr\Http\Message\ResponseInterface;
 use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 
 trait Request
@@ -23,6 +24,12 @@ trait Request
             'verify' => true, // Enable SSL verification (recommended for production)
         ]);
 
+        return $this->parseResponse($response);
+    }
+
+    /** @return array<string, mixed>|InvalidRequestException */
+    public function parseResponse(ResponseInterface $response): array|InvalidRequestException
+    {
         $body = $response->getBody();
         $responseData = json_decode((string) $body, true, 512, JSON_THROW_ON_ERROR);
 
