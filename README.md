@@ -41,6 +41,11 @@ This package provides a fluent interface to communicate with the WeFact API.
 -   [Credits](#credits)
 -   [License](#license)
 
+## Minimum requirements
+
+-   PHP 8.1 or higher
+-   Guzzle 7.0 or higher
+
 ## Installation
 
 You can install the package via composer:
