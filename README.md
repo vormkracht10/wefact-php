@@ -57,6 +57,14 @@ This package provides a fluent interface to communicate with the WeFact API. For
         -   [Unblock](#unblock)
         -   [Schedule](#schedule)
         -   [Cancel schedule](#cancel-schedule)
+        -   [Pause payment process](#pause-payment-process)
+        -   [Reactivate payment process](#reactivate-payment-process)
+        -   [Sort lines](#sort-lines)
+        -   [Add invoice line](#add-invoice-line)
+        -   [Delete invoice line](#delete-invoice-line)
+        -   [Add attachment](#add-attachment)
+        -   [Delete attachment](#delete-attachment)
+        -   [Download attachment](#download-attachment)
     -   [Product](#product)
         -   [List products](#list-products)
         -   [Create product](#create-product)
@@ -486,6 +494,109 @@ Required parameter: `Identifier` or `InvoiceCode`.
 $weFact->invoice()->cancelSchedule(['Identifier' => $invoiceId]);
 // or
 $weFact->invoice()->cancelSchedule(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Pause payment process
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->paymentProcessPause(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->paymentProcessPause(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Reactivate payment process
+
+Required parameter: `Identifier` or `InvoiceCode`.
+
+```php
+$weFact->invoice()->paymentProcessReactivate(['Identifier' => $invoiceId]);
+// or
+$weFact->invoice()->paymentProcessReactivate(['InvoiceCode' => $invoiceCode]);
+```
+
+#### Sort lines
+
+Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines Identifier`.
+
+```php
+$weFact->invoice()->sortLines([
+    'Identifier' => $invoiceId,
+    'InvoiceLines' => [
+      [
+        'Identifier' => $invoiceLineId,
+      ]
+    ]
+  ]);
+```
+
+#### Add invoice line
+
+Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines`.
+
+```php
+$weFact->invoice()->addLine([
+    'Identifier' => $invoiceId,
+    'InvoiceLines' => [
+      [
+        'Number' => 1,
+        'ProductCode' => 'P0001'
+      ]
+    ],
+  ]);
+```
+
+#### Delete invoice line
+
+Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines Identifier`.
+
+```php
+$weFact->invoice()->deleteLine([
+    'Identifier' => $invoiceId,
+    'InvoiceLines' => [
+      [
+        'Identifier' => $invoiceLineId,
+      ]
+    ]
+  ]);
+```
+
+#### Add attachment
+
+Required parameter: `ReferenceIdentifier` or `InvoiceCode`, `Tyoe`, `Filename` and `Base64`.
+
+```php
+$weFact->invoice()->addAttachment([
+    'ReferenceIdentifier' => $invoiceId,
+    'Type' => 'invoice',
+    'Filename' => 'test.pdf',
+    'Base64' => 'base64string'
+  ]);
+```
+
+#### Delete attachment
+
+Required parameter: `Identifier` or `Filename`, `ReferenceIdentifier` or `InvoiceCode` and `Type`.
+
+```php
+$weFact->invoice()->deleteAttachment([
+    'Identifier' => $attachmentId,
+    'ReferenceIdentifier' => $invoiceId,
+    'Type' => 'invoice',
+  ]);
+```
+
+#### Download attachment
+
+Required parameter: `Identifier` or `Filename`, `ReferenceIdentifier` or `InvoiceCode` and `Type`.
+
+```php
+$weFact->invoice()->downloadAttachment([
+    'ReferenceIdentifier' => $invoiceId,
+    'Filename' => 'test.pdf',
+    'Type' => 'invoice',
+  ]);
 ```
 
 ### Product

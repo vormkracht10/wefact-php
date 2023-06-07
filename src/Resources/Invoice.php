@@ -167,4 +167,92 @@ class Invoice extends Resource
     {        
         return $this->send(action: InvoiceAction::CANCEL_SCHEDULE->value, params: $params);
     }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function paymentProcessPause(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::PAYMENT_PROCESS_PAUSE->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function paymentProcessReactivate(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::PAYMENT_PROCESS_REACTIVATE->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function sortLines(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::SORT_LINES->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function invoiceLineAdd(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::INVOICE_LINE_ADD->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function invoiceLineDelete(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::INVOICE_LINE_DELETE->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function attachmentAdd(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::ATTACHMENT_ADD->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function attachmentDelete(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::ATTACHMENT_DELETE->value, params: $params);
+    }
+
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
+    public function attachmentDownload(array $params = []): array|InvalidRequestException
+    {        
+        return $this->send(action: InvoiceAction::ATTACHMENT_DOWNLOAD->value, params: $params);
+    }
 }
