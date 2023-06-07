@@ -2,13 +2,16 @@
 
 namespace Vormkracht10\WeFact\Traits;
 
+use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
+
 trait Request
 {
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>
+     * @throws InvalidRequestException
      */
-    public function sendRequest(string $controller, string $action, array $params): array
+    public function sendRequest(string $controller, string $action, array $params): array|InvalidRequestException
     {
         $params['api_key'] = $this->apiKey;
         $params['controller'] = $controller;
@@ -21,6 +24,10 @@ trait Request
 
         $body = $response->getBody();
         $responseData = json_decode($body, true);
+
+        if ($responseData['status'] === 'error') {
+            throw new InvalidRequestException($responseData['errors'][0]);
+        }
 
         return $responseData;
     }

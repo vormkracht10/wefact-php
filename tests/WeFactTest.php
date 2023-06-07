@@ -20,3 +20,10 @@ it('can create wefact instance', function () {
     expect($weFact->group())->toBeInstanceOf(Group::class);
     expect($weFact->product())->toBeInstanceOf(Product::class);
 });
+
+it('can return an error when non existing API key is used', function () {
+    $apiKey = 'FAKE_API_KEY';
+    $weFact = new WeFact($apiKey);
+    
+    $weFact->invoice()->list();
+})->throws(\Vormkracht10\WeFact\Exceptions\InvalidRequestException::class);

@@ -4,6 +4,7 @@ namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
 use Vormkracht10\WeFact\Enums\Action;
+use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 use Vormkracht10\WeFact\Traits\Request;
 
@@ -21,9 +22,10 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>
+     * @return array<string, mixed>|InvalidRequestException
+     * @throws InvalidRequestException
      */
-    public function list(array $params = []): array
+    public function list(array $params = []): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
 
@@ -36,9 +38,10 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>
+     * @return array<string, mixed>|InvalidRequestException
+     * @throws InvalidRequestException
      */
-    public function show(int $id, array $params = []): array
+    public function show(int $id, array $params = []): array|InvalidRequestException
     {
         $params['Identifier'] = $id;
 
@@ -53,9 +56,10 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>
+     * @return array<string, mixed>|InvalidRequestException
+     * @throws InvalidRequestException
      */
-    public function create(array $params): array
+    public function create(array $params): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
 
@@ -68,9 +72,10 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>
+     * @return array<string, mixed>|InvalidRequestException
+     * @throws InvalidRequestException
      */
-    public function edit(array $params): array
+    public function edit(array $params): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
 
@@ -83,11 +88,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return MethodNotAvailableException|array<string, mixed>
+     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
      *
-     * @throws MethodNotAvailableException
+     * @throws MethodNotAvailableException|InvalidRequestException
      */
-    public function delete(array $params = []): MethodNotAvailableException|array
+    public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
     {
         $controller = $this->getResourceName();
 
