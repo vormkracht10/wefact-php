@@ -9,6 +9,7 @@ trait Request
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>
+     *
      * @throws InvalidRequestException
      */
     public function sendRequest(string $controller, string $action, array $params): array|InvalidRequestException
