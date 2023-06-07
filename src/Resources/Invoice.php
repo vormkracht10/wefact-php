@@ -4,12 +4,9 @@ namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
 use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Traits\Request;
 
-class Invoice
+class Invoice extends Resource
 {
-    use Request;
-
     public const CONTROLLER_NAME = 'invoice';
 
     public function __construct(
@@ -20,29 +17,9 @@ class Invoice
         $this->http = $http;
     }
 
-    public function getEndpointName(): string
+    public function getResourceName(): string
     {
         return self::CONTROLLER_NAME;
-    }
-
-    public function list(array $params = []): array
-    {
-        return $this->sendRequest(
-            controller: self::CONTROLLER_NAME,
-            action: Action::LIST->value,
-            params: $params
-        );
-    }
-
-    public function show(int $id, array $params = []): array
-    {
-        $params['Identifier'] = $id;
-
-        return $this->sendRequest(
-            controller: self::CONTROLLER_NAME,
-            action: Action::SHOW->value,
-            params: $params
-        );
     }
 
     public function showByInvoiceCode(string $invoiceCode, array $params = []): array
@@ -50,19 +27,8 @@ class Invoice
         $params['InvoiceCode'] = $invoiceCode;
 
         return $this->sendRequest(
-            controller: self::CONTROLLER_NAME,
+            controller: $this->getResourceName(),
             action: Action::SHOW->value,
-            params: $params
-        );
-    }
-
-    public function delete(int $id, array $params = []): array
-    {
-        $params['Identifier'] = $id;
-
-        return $this->sendRequest(
-            controller: self::CONTROLLER_NAME,
-            action: Action::DELETE->value,
             params: $params
         );
     }
