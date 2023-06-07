@@ -3,7 +3,6 @@
 namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
-use Vormkracht10\WeFact\Enums\Action;
 
 class Invoice extends Resource
 {
