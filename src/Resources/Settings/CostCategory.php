@@ -19,6 +19,12 @@ class CostCategory extends Resource
         return self::CONTROLLER_NAME;
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
     public function list(array $params = []): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
@@ -30,6 +36,12 @@ class CostCategory extends Resource
         );
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
     public function show(array $params = []): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
@@ -41,6 +53,12 @@ class CostCategory extends Resource
         );
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|InvalidRequestException
+     *
+     * @throws InvalidRequestException
+     */
     public function create(array $params): array|InvalidRequestException
     {
         $controller = $this->getResourceName();
@@ -69,6 +87,12 @@ class CostCategory extends Resource
         );
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     *
+     * @throws MethodNotAvailableException|InvalidRequestException
+     */
     public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
     {
         $controller = $this->getResourceName();
