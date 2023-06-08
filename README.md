@@ -114,7 +114,7 @@ Then you can use the package like this:
 ```php
 $weFact = new Vormkracht10\WeFact('your-api-key');
 
-$invoices = $weFact->invoice()->list();
+$invoices = $weFact->invoices()->list();
 ```
 
 ## Available methods
@@ -124,7 +124,7 @@ $invoices = $weFact->invoice()->list();
 #### List creditors
 
 ```php
-$weFact->creditor()->list();
+$weFact->creditors()->list();
 ```
 
 #### Create creditor
@@ -132,7 +132,7 @@ $weFact->creditor()->list();
 Required parameters: `CompanyName` or `SurName`.
 
 ```php
-$weFact->creditor()->create([
+$weFact->creditors()->create([
     'CompanyName' => 'Your company name',
   ])
 ```
@@ -142,7 +142,7 @@ $weFact->creditor()->create([
 Required parameter: `Identifier` or `CreditorCode`.
 
 ```php
-$weFact->creditor()->edit([
+$weFact->creditors()->edit([
     'Identifier' => $creditorId,
     'CompanyName' => 'Your company name',
   ])
@@ -153,9 +153,9 @@ $weFact->creditor()->edit([
 Required parameter: `Identifier` or `CreditorCode`.
 
 ```php
-$weFact->creditor()->show(['Identifier' => $creditorId]);
+$weFact->creditors()->show(['Identifier' => $creditorId]);
 // or
-$weFact->creditor()->show(['CreditorCode' => $creditorCode]);
+$weFact->creditors()->show(['CreditorCode' => $creditorCode]);
 ```
 
 #### Delete creditor
@@ -163,9 +163,9 @@ $weFact->creditor()->show(['CreditorCode' => $creditorCode]);
 Required parameter: `Identifier` or `CreditorCode`.
 
 ```php
-$weFact->creditor()->delete(['Identifier' => $creditorId]);
+$weFact->creditors()->delete(['Identifier' => $creditorId]);
 // or
-$weFact->creditor()->delete(['CreditorCode' => $creditorCode]);
+$weFact->creditors()->delete(['CreditorCode' => $creditorCode]);
 ```
 
 ### Credit Invoice
@@ -173,7 +173,7 @@ $weFact->creditor()->delete(['CreditorCode' => $creditorCode]);
 #### List credit invoices
 
 ```php
-$weFact->creditInvoice()->list();
+$weFact->creditInvoices()->list();
 ```
 
 #### Create credit invoice
@@ -181,7 +181,7 @@ $weFact->creditInvoice()->list();
 Required parameters: `InvoiceCode`, `Creditor` or `CreditorCode` and `InvoiceLines`.
 
 ```php
-$weFact->creditInvoice()->create([
+$weFact->creditInvoices()->create([
     'InvoiceCode' => 'your-invoice-code',
     'CreditorCode' => 'CD10001'
     'InvoiceLines' => [
@@ -198,7 +198,7 @@ $weFact->creditInvoice()->create([
 Required parameter: `Identifier` or `CreditInvoiceCode`.
 
 ```php
-$weFact->creditInvoice()->edit([
+$weFact->creditInvoices()->edit([
     'Identifier' => $creditInvoiceId,
     'Comment' => 'Your comment',
   ])
@@ -209,9 +209,9 @@ $weFact->creditInvoice()->edit([
 Required parameter: `Identifier` or `CreditInvoiceCode`.
 
 ```php
-$weFact->creditInvoice()->show(['Identifier' => $creditInvoiceId]);
+$weFact->creditInvoices()->show(['Identifier' => $creditInvoiceId]);
 // or
-$weFact->creditInvoice()->show(['CreditInvoiceCode' => $creditInvoiceCode]);
+$weFact->creditInvoices()->show(['CreditInvoiceCode' => $creditInvoiceCode]);
 ```
 
 #### Delete credit invoice
@@ -219,9 +219,9 @@ $weFact->creditInvoice()->show(['CreditInvoiceCode' => $creditInvoiceCode]);
 Required parameter: `Identifier` or `CreditInvoiceCode`.
 
 ```php
-$weFact->creditInvoice()->delete(['Identifier' => $creditInvoiceId]);
+$weFact->creditInvoices()->delete(['Identifier' => $creditInvoiceId]);
 // or
-$weFact->creditInvoice()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
+$weFact->creditInvoices()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
 ```
 
 ### Debtor
@@ -229,7 +229,7 @@ $weFact->creditInvoice()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
 #### List debtors
 
 ```php
-$weFact->debtor()->list();
+$weFact->debtors()->list();
 ```
 
 #### Create debtor
@@ -237,7 +237,7 @@ $weFact->debtor()->list();
 Required parameters: `CompanyName` or `SurName`.
 
 ```php
-$weFact->debtor()->create([
+$weFact->debtors()->create([
     'CompanyName' => 'Your company name',
   ])
 ```
@@ -247,7 +247,7 @@ $weFact->debtor()->create([
 Required parameter: `Identifier` or `DebtorCode`, `CompanyName` or `SurName`.
 
 ```php
-$weFact->debtor()->edit([
+$weFact->debtors()->edit([
     'Identifier' => $debtorId,
     'CompanyName' => 'Your company name',
   ])
@@ -258,9 +258,9 @@ $weFact->debtor()->edit([
 Required parameter: `Identifier` or `DebtorCode`.
 
 ```php
-$weFact->debtor()->show(['Identifier' => $debtorId]);
+$weFact->debtors()->show(['Identifier' => $debtorId]);
 // or
-$weFact->debtor()->show(['DebtorCode' => $debtorCode]);
+$weFact->debtors()->show(['DebtorCode' => $debtorCode]);
 ```
 
 ### Group
@@ -270,7 +270,7 @@ $weFact->debtor()->show(['DebtorCode' => $debtorCode]);
 Required parameter: `Type`.
 
 ```php
-$weFact->group()->list([
+$weFact->groups()->list([
     'type' => 'debtor',
 ]);
 ```
@@ -280,7 +280,7 @@ $weFact->group()->list([
 Required parameters: `Type` and `GroupName`.
 
 ```php
-$weFact->group()->create([
+$weFact->groups()->create([
     'Type' => 'debtor',
     'GroupName' => 'Your group name',
   ])
@@ -291,7 +291,7 @@ $weFact->group()->create([
 Required parameter: `Identifier`.
 
 ```php
-$weFact->group()->edit([
+$weFact->groups()->edit([
     'Identifier' => $groupId,
     'GroupName' => 'Your group name',
   ])
@@ -302,7 +302,7 @@ $weFact->group()->edit([
 Required parameter: `Identifier`.
 
 ```php
-$weFact->group()->show(['Identifier' => $groupId]);
+$weFact->groups()->show(['Identifier' => $groupId]);
 ```
 
 #### Delete group
@@ -310,7 +310,7 @@ $weFact->group()->show(['Identifier' => $groupId]);
 Required parameter: `Identifier`.
 
 ```php
-$weFact->group()->delete(['Identifier' => $groupId]);
+$weFact->groups()->delete(['Identifier' => $groupId]);
 ```
 
 ### Invoice
@@ -318,7 +318,7 @@ $weFact->group()->delete(['Identifier' => $groupId]);
 #### List invoices
 
 ```php
-$weFact->invoice()->list();
+$weFact->invoices()->list();
 ```
 
 #### Create invoice
@@ -326,7 +326,7 @@ $weFact->invoice()->list();
 Required parameters: `DebtorCode` or `DebtorCode` and `InvoiceLines`.
 
 ```php
-$weFact->invoice()->create([
+$weFact->invoices()->create([
     'DebtorCode' => 'DB10000',
     'InvoiceLines' => [
       [
@@ -346,7 +346,7 @@ $weFact->invoice()->create([
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->edit([
+$weFact->invoices()->edit([
     'Identifier' => $invoiceId,
     'InvoiceLines' => [
       [
@@ -366,9 +366,9 @@ $weFact->invoice()->edit([
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->show(['Identifier' => $invoiceId]);
+$weFact->invoices()->show(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->show(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->show(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Delete invoice
@@ -376,9 +376,9 @@ $weFact->invoice()->show(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->delete(['Identifier' => $invoiceId]);
+$weFact->invoices()->delete(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->delete(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->delete(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Credit
@@ -386,9 +386,9 @@ $weFact->invoice()->delete(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->credit(['Identifier' => $invoiceId]);
+$weFact->invoices()->credit(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->credit(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->credit(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Part payment
@@ -396,9 +396,9 @@ $weFact->invoice()->credit(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->partPayment(['Identifier' => $invoiceId]);
+$weFact->invoices()->partPayment(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->partPayment(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->partPayment(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Mark invoice as paid
@@ -406,9 +406,9 @@ $weFact->invoice()->partPayment(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->markAsPaid(['Identifier' => $invoiceId]);
+$weFact->invoices()->markAsPaid(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->markAsPaid(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->markAsPaid(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Mark invoice as unpaid
@@ -416,9 +416,9 @@ $weFact->invoice()->markAsPaid(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->markAsUnpaid(['Identifier' => $invoiceId]);
+$weFact->invoices()->markAsUnpaid(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->markAsUnpaid(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->markAsUnpaid(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Send by email
@@ -426,9 +426,9 @@ $weFact->invoice()->markAsUnpaid(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->sendByEmail(['Identifier' => $invoiceId]);
+$weFact->invoices()->sendByEmail(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->sendByEmail(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->sendByEmail(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Send reminder by email
@@ -436,9 +436,9 @@ $weFact->invoice()->sendByEmail(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->sendReminderByEmail(['Identifier' => $invoiceId]);
+$weFact->invoices()->sendReminderByEmail(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->sendReminderByEmail(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->sendReminderByEmail(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Download
@@ -446,9 +446,9 @@ $weFact->invoice()->sendReminderByEmail(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->download(['Identifier' => $invoiceId]);
+$weFact->invoices()->download(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->download(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->download(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Block
@@ -456,9 +456,9 @@ $weFact->invoice()->download(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->block(['Identifier' => $invoiceId]);
+$weFact->invoices()->block(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->block(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->block(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Unblock
@@ -466,9 +466,9 @@ $weFact->invoice()->block(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->unblock(['Identifier' => $invoiceId]);
+$weFact->invoices()->unblock(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->unblock(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->unblock(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Schedule
@@ -476,12 +476,12 @@ $weFact->invoice()->unblock(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode` and `ScheduledAt`.
 
 ```php
-$weFact->invoice()->schedule([
+$weFact->invoices()->schedule([
     'Identifier' => $invoiceId,
     'ScheduledAt' => '2020-01-01 00:00:00'
   ])
 // or
-$weFact->invoice()->schedule([
+$weFact->invoices()->schedule([
     'InvoiceCode' => $invoiceCode,
     'ScheduledAt' => '2020-01-01 00:00:00'
   ])
@@ -492,9 +492,9 @@ $weFact->invoice()->schedule([
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->cancelSchedule(['Identifier' => $invoiceId]);
+$weFact->invoices()->cancelSchedule(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->cancelSchedule(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->cancelSchedule(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Pause payment process
@@ -502,9 +502,9 @@ $weFact->invoice()->cancelSchedule(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->paymentProcessPause(['Identifier' => $invoiceId]);
+$weFact->invoices()->paymentProcessPause(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->paymentProcessPause(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->paymentProcessPause(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Reactivate payment process
@@ -512,9 +512,9 @@ $weFact->invoice()->paymentProcessPause(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode`.
 
 ```php
-$weFact->invoice()->paymentProcessReactivate(['Identifier' => $invoiceId]);
+$weFact->invoices()->paymentProcessReactivate(['Identifier' => $invoiceId]);
 // or
-$weFact->invoice()->paymentProcessReactivate(['InvoiceCode' => $invoiceCode]);
+$weFact->invoices()->paymentProcessReactivate(['InvoiceCode' => $invoiceCode]);
 ```
 
 #### Sort lines
@@ -522,7 +522,7 @@ $weFact->invoice()->paymentProcessReactivate(['InvoiceCode' => $invoiceCode]);
 Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines Identifier`.
 
 ```php
-$weFact->invoice()->sortLines([
+$weFact->invoices()->sortLines([
     'Identifier' => $invoiceId,
     'InvoiceLines' => [
       [
@@ -537,7 +537,7 @@ $weFact->invoice()->sortLines([
 Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines`.
 
 ```php
-$weFact->invoice()->addLine([
+$weFact->invoices()->addLine([
     'Identifier' => $invoiceId,
     'InvoiceLines' => [
       [
@@ -553,7 +553,7 @@ $weFact->invoice()->addLine([
 Required parameter: `Identifier` or `InvoiceCode` and `InvoiceLines Identifier`.
 
 ```php
-$weFact->invoice()->deleteLine([
+$weFact->invoices()->deleteLine([
     'Identifier' => $invoiceId,
     'InvoiceLines' => [
       [
@@ -568,7 +568,7 @@ $weFact->invoice()->deleteLine([
 Required parameter: `ReferenceIdentifier` or `InvoiceCode`, `Tyoe`, `Filename` and `Base64`.
 
 ```php
-$weFact->invoice()->addAttachment([
+$weFact->invoices()->addAttachment([
     'ReferenceIdentifier' => $invoiceId,
     'Type' => 'invoice',
     'Filename' => 'test.pdf',
@@ -581,7 +581,7 @@ $weFact->invoice()->addAttachment([
 Required parameter: `Identifier` or `Filename`, `ReferenceIdentifier` or `InvoiceCode` and `Type`.
 
 ```php
-$weFact->invoice()->deleteAttachment([
+$weFact->invoices()->deleteAttachment([
     'Identifier' => $attachmentId,
     'ReferenceIdentifier' => $invoiceId,
     'Type' => 'invoice',
@@ -593,7 +593,7 @@ $weFact->invoice()->deleteAttachment([
 Required parameter: `Identifier` or `Filename`, `ReferenceIdentifier` or `InvoiceCode` and `Type`.
 
 ```php
-$weFact->invoice()->downloadAttachment([
+$weFact->invoices()->downloadAttachment([
     'ReferenceIdentifier' => $invoiceId,
     'Filename' => 'test.pdf',
     'Type' => 'invoice',
@@ -605,7 +605,7 @@ $weFact->invoice()->downloadAttachment([
 #### List products
 
 ```php
-$weFact->product()->list();
+$weFact->products()->list();
 ```
 
 #### Create product
@@ -613,7 +613,7 @@ $weFact->product()->list();
 Required parameters: `ProductName`, `ProductKeyPhrase` and `PriceExcl`.
 
 ```php
-$weFact->product()->create([
+$weFact->products()->create([
     'ProductName' => 'Your product name',
     'ProductKeyPhrase' => 'Your product key phrase',
     'PriceExcl' => 100
@@ -625,7 +625,7 @@ $weFact->product()->create([
 Required parameter: `Identifier` or `ProductCode`.
 
 ```php
-$weFact->product()->edit([
+$weFact->products()->edit([
     'Identifier' => $productId,
     'ProductName' => 'Your product name',
     'ProductKeyPhrase' => 'Your product key phrase',
@@ -638,7 +638,7 @@ $weFact->product()->edit([
 Required parameter: `Identifier`
 
 ```php
-$weFact->product()->show(['Identifier' => $productId]);
+$weFact->products()->show(['Identifier' => $productId]);
 ```
 
 #### Delete product
@@ -646,9 +646,9 @@ $weFact->product()->show(['Identifier' => $productId]);
 Required parameter: `Identifier` or `ProductCode`.
 
 ```php
-$weFact->product()->delete(['Identifier' => $productId]);
+$weFact->products()->delete(['Identifier' => $productId]);
 // or
-$weFact->product()->delete(['ProductCode' => $productCode]);
+$weFact->products()->delete(['ProductCode' => $productCode]);
 ```
 
 ### Settings
@@ -664,7 +664,7 @@ $weFact->settings()->list();
 #### List cost categories
 
 ```php
-$weFact->costCategory()->list();
+$weFact->costCategories()->list();
 ```
 
 #### Create cost category
@@ -672,7 +672,7 @@ $weFact->costCategory()->list();
 Required parameters: `Title`.
 
 ```php
-$weFact->costCategory()->create([
+$weFact->costCategories()->create([
     'Title' => 'Your cost category title',
   ]);
 ```
@@ -682,7 +682,7 @@ $weFact->costCategory()->create([
 Required parameter: `Identifier`.
 
 ```php
-$weFact->costCategory()->edit([
+$weFact->costCategories()->edit([
   'Identifier' => $costCategoryId,
 ]);
 ```
@@ -692,7 +692,7 @@ $weFact->costCategory()->edit([
 Required parameter: `Identifier`.
 
 ```php
-$weFact->costCategory()->show(['Identifier' => $costCategoryId]);
+$weFact->costCategories()->show(['Identifier' => $costCategoryId]);
 ```
 
 #### Delete cost category
@@ -700,7 +700,7 @@ $weFact->costCategory()->show(['Identifier' => $costCategoryId]);
 Required parameter: `Identifier`.
 
 ```php
-$weFact->costCategory()->delete(['Identifier' => $costCategoryId]);
+$weFact->costCategories()->delete(['Identifier' => $costCategoryId]);
 ```
 
 ### Subscription
@@ -708,7 +708,7 @@ $weFact->costCategory()->delete(['Identifier' => $costCategoryId]);
 #### List subscriptions
 
 ```php
-$weFact->subscription()->list();
+$weFact->subscriptions()->list();
 ```
 
 #### Create subscription
@@ -718,7 +718,7 @@ Required parameters: `Debtor` or `DebtorCode` and `ProductCode`. When `ProductCo
 > Please note: You can pass either the `TerminateAfter` or the `TerminationDate`, not both. The `TerminateAfter` includes the number of times the subscription has been billed in the past.
 
 ```php
-$weFact->subscription()->create([
+$weFact->subscriptions()->create([
     'DebtorCode' => 'DB10000',
     'ProductCode' => 'P0001',
     'Description' => 'Your product description',
@@ -735,7 +735,7 @@ Required parameter: `Identifier`.
 > Please note: You can pass either the `TerminateAfter` or the `TerminationDate`, not both. The `TerminateAfter` includes the number of times the subscription has been billed in the past.
 
 ```php
-$weFact->subscription()->edit([
+$weFact->subscriptions()->edit([
     'Identifier' => $subscriptionId,
     'Description' => 'Your product description',
     'PriceExcl' => 100,
@@ -749,7 +749,7 @@ $weFact->subscription()->edit([
 Required parameter: `Identifier`.
 
 ```php
-$weFact->subscription()->show(['Identifier' => $subscriptionId]);
+$weFact->subscriptions()->show(['Identifier' => $subscriptionId]);
 ```
 
 #### Terminate subscription
@@ -757,7 +757,7 @@ $weFact->subscription()->show(['Identifier' => $subscriptionId]);
 Required parameter: `Identifier`.
 
 ```php
-$weFact->subscription()->terminate(['Identifier' => $subscriptionId]);
+$weFact->subscriptions()->terminate(['Identifier' => $subscriptionId]);
 ```
 
 ## Testing

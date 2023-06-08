@@ -44,7 +44,7 @@ class WeFact
         return $this->http;
     }
 
-    public function invoice(): Invoice
+    public function invoices(): Invoice
     {
         return new Invoice(
             $this->http,
@@ -53,7 +53,7 @@ class WeFact
         );
     }
 
-    public function debtor(): Debtor
+    public function debtors(): Debtor
     {
         return new Debtor(
             $this->http,
@@ -62,7 +62,7 @@ class WeFact
         );
     }
 
-    public function group(): Group
+    public function groups(): Group
     {
         return new Group(
             $this->http,
@@ -71,7 +71,7 @@ class WeFact
         );
     }
 
-    public function product(): Product
+    public function products(): Product
     {
         return new Product(
             $this->http,
@@ -80,7 +80,7 @@ class WeFact
         );
     }
 
-    public function creditor(): Creditor
+    public function creditors(): Creditor
     {
         return new Creditor(
             $this->http,
@@ -89,7 +89,7 @@ class WeFact
         );
     }
 
-    public function creditInvoice(): CreditInvoice
+    public function creditInvoices(): CreditInvoice
     {
         return new CreditInvoice(
             $this->http,
@@ -98,7 +98,7 @@ class WeFact
         );
     }
 
-    public function subscription(): Subscription
+    public function subscriptions(): Subscription
     {
         return new Subscription(
             $this->http,
@@ -116,7 +116,7 @@ class WeFact
         );
     }
 
-    public function costCategory(): CostCategory
+    public function costCategories(): CostCategory
     {
         return new CostCategory(
             $this->http,
