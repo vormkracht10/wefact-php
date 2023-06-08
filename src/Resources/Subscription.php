@@ -2,8 +2,8 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Enums\Subscription\SubscriptionAction;
+use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 
 class Subscription extends Resource
