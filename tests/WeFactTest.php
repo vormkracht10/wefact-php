@@ -1,14 +1,13 @@
 <?php
 
-use Vormkracht10\WeFact\WeFact;
-use Vormkracht10\WeFact\Resources\Group;
 use Vormkracht10\WeFact\Resources\Debtor;
+use Vormkracht10\WeFact\Resources\Group;
 use Vormkracht10\WeFact\Resources\Invoice;
 use Vormkracht10\WeFact\Resources\Product;
-use Vormkracht10\WeFact\Resources\Subscription;
-use Vormkracht10\WeFact\Resources\Settings\Settings;
 use Vormkracht10\WeFact\Resources\Settings\CostCategory;
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
+use Vormkracht10\WeFact\Resources\Settings\Settings;
+use Vormkracht10\WeFact\Resources\Subscription;
+use Vormkracht10\WeFact\WeFact;
 
 it('can create wefact instance', function () {
     $apiKey = 'FAKE_API_KEY';
