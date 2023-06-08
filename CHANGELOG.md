@@ -2,6 +2,10 @@
 
 All notable changes to `wefact-php` will be documented in this file.
 
+## v0.4.0 - 2023-06-08
+
+Change singular resource method names to plural.
+
 ## v0.3.0 - 2023-06-07
 
 This release includes all remaining `Invoice` resource methods.
