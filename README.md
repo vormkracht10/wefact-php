@@ -232,6 +232,16 @@ $weFact->creditInvoices()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
 $weFact->debtors()->list();
 ```
 
+You can also search for debtors:
+
+```php
+$weFact->debtors()->list([
+  'searchat' => 'EmailAddress',
+  'searchfor' => 'example@example.com'
+]);
+```
+
+
 #### Create debtor
 
 Required parameters: `CompanyName` or `SurName`.
