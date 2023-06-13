@@ -1,6 +1,9 @@
 # Changelog
 
 All notable changes to `wefact-php` will be documented in this file.
+## v0.5.0 - 2023-06-13
+
+Removed `InvalidRequestException` and use Guzzle Client Exceptions.
 
 ## v0.4.0 - 2023-06-08
 

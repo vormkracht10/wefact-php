@@ -3,8 +3,11 @@
 namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use JsonException;
 use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 use Vormkracht10\WeFact\Traits\Request;
 
@@ -22,11 +25,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws InvalidRequestException
+     * @throws ClientException|ServerException|BadResponseException|JsonException
      */
-    public function list(array $params = []): array|MethodNotAvailableException|InvalidRequestException
+    public function list(array $params = []): array
     {
         $controller = $this->getResourceName();
 
@@ -39,11 +42,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
-     * @throws MethodNotAvailableException|InvalidRequestException
+     * @throws MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      */
-    public function show(array $params = []): array|MethodNotAvailableException|InvalidRequestException
+    public function show(array $params = []): array|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
     {
         $controller = $this->getResourceName();
 
@@ -56,11 +59,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
-     * @throws MethodNotAvailableException|InvalidRequestException
+     * @throws MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      */
-    public function create(array $params): array|MethodNotAvailableException|InvalidRequestException
+    public function create(array $params): array|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
     {
         $controller = $this->getResourceName();
 
@@ -73,11 +76,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
-     * @throws MethodNotAvailableException|InvalidRequestException
+     * @throws MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      */
-    public function edit(array $params): array|MethodNotAvailableException|InvalidRequestException
+    public function edit(array $params): array|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
     {
         $controller = $this->getResourceName();
 
@@ -90,11 +93,11 @@ abstract class Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
-     * @throws MethodNotAvailableException|InvalidRequestException
+     * @throws MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      */
-    public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
+    public function delete(array $params = []): array|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
     {
         $controller = $this->getResourceName();
 

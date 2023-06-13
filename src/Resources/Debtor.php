@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 
 class Debtor extends Resource
@@ -14,7 +13,10 @@ class Debtor extends Resource
         return self::CONTROLLER_NAME;
     }
 
-    public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
+    /**
+     * @return array<mixed, string>
+     */
+    public function delete(array $params = []): array
     {
         throw new MethodNotAvailableException(
             sprintf('%s is not available for this resource.', __METHOD__)
