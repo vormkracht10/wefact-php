@@ -114,7 +114,10 @@ Then you can use the package like this:
 ```php
 $weFact = new \Vormkracht10\WeFact\WeFact('your-api-key');
 
-$invoices = $weFact->invoices()->list();
+$response = $weFact->invoices()->list();
+if (isset($response['invoices'])) {
+  print_r($response['invoices']);
+}
 ```
 
 ## Available methods
@@ -124,7 +127,10 @@ $invoices = $weFact->invoices()->list();
 #### List creditors
 
 ```php
-$weFact->creditors()->list();
+$response = $weFact->creditors()->list();
+if (isset($response['creditors'])) {
+  print_r($response['creditors']);
+}
 ```
 
 #### Create creditor
@@ -132,9 +138,12 @@ $weFact->creditors()->list();
 Required parameters: `CompanyName` or `SurName`.
 
 ```php
-$weFact->creditors()->create([
+$response = $weFact->creditors()->create([
     'CompanyName' => 'Your company name',
-  ])
+  ]);
+if ($result['status'] == 'success') {
+  print_r($response['company']);
+}
 ```
 
 #### Update creditor
@@ -142,10 +151,15 @@ $weFact->creditors()->create([
 Required parameter: `Identifier` or `CreditorCode`.
 
 ```php
-$weFact->creditors()->edit([
+$result = $weFact->creditors()->edit([
     'Identifier' => $creditorId,
     'CompanyName' => 'Your company name',
-  ])
+  ]);
+
+if ($result['status'] == 'error') {
+  // Something went wrong
+  print_r($result['errors']);
+}
 ```
 
 #### Show creditor

@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 trait Request
 {
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array<string, mixed> $params
      * @return array<string, mixed>
      */
     public function sendRequest(string $controller, string $action, array $params): array
@@ -25,13 +25,12 @@ trait Request
     }
 
     /**
-     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      * 
-     * @throws ClientException;
-     * @throws ServerException;
-     * @throws JsonException;
-     * @throws BadResponseException;
+     * @throws \GuzzleHttp\Exception\ClientException;
+     * @throws \GuzzleHttp\Exception\ServerException;
+     * @throws \JsonException;
+     * @throws \GuzzleHttp\Exception\BadResponseException;
      */
     public function parseResponse(ResponseInterface $response): array
     {
