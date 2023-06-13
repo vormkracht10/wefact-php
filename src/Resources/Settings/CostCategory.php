@@ -3,10 +3,13 @@
 namespace Vormkracht10\WeFact\Resources\Settings;
 
 use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 use Vormkracht10\WeFact\Resources\Resource;
 use Vormkracht10\WeFact\Traits\Request;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\BadResponseException;
+use \JsonException;
 
 class CostCategory extends Resource
 {
@@ -21,11 +24,14 @@ class CostCategory extends Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws InvalidRequestException
+     * @throws ClientException
+     * @throws ServerException
+     * @throws BadResponseException
+     * @throws JsonException
      */
-    public function list(array $params = []): array|InvalidRequestException
+    public function list(array $params = []): array
     {
         $controller = $this->getResourceName();
 
@@ -38,11 +44,14 @@ class CostCategory extends Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws InvalidRequestException
+     * @throws ClientException
+     * @throws ServerException
+     * @throws BadResponseException
+     * @throws JsonException
      */
-    public function show(array $params = []): array|InvalidRequestException
+    public function show(array $params = []): array
     {
         $controller = $this->getResourceName();
 
@@ -55,11 +64,14 @@ class CostCategory extends Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws InvalidRequestException
+     * @throws ClientException
+     * @throws ServerException
+     * @throws BadResponseException
+     * @throws JsonException
      */
-    public function create(array $params): array|InvalidRequestException
+    public function create(array $params): array
     {
         $controller = $this->getResourceName();
 
@@ -72,11 +84,14 @@ class CostCategory extends Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws InvalidRequestException
+     * @throws ClientException
+     * @throws ServerException
+     * @throws BadResponseException
+     * @throws JsonException
      */
-    public function edit(array $params): array|InvalidRequestException
+    public function edit(array $params): array
     {
         $controller = $this->getResourceName();
 
@@ -89,11 +104,15 @@ class CostCategory extends Resource
 
     /**
      * @param  array<string, mixed>  $params
-     * @return array<string, mixed>|MethodNotAvailableException|InvalidRequestException
+     * @return array<string, mixed>
      *
-     * @throws MethodNotAvailableException|InvalidRequestException
+     * @throws MethodNotAvailableException
+     * @throws ClientException
+     * @throws ServerException
+     * @throws BadResponseException
+     * @throws JsonException
      */
-    public function delete(array $params = []): array|MethodNotAvailableException|InvalidRequestException
+    public function delete(array $params = []): array
     {
         $controller = $this->getResourceName();
 

@@ -2,18 +2,19 @@
 
 namespace Vormkracht10\WeFact\Traits;
 
+use \JsonException;
 use Psr\Http\Message\ResponseInterface;
-use Vormkracht10\WeFact\Exceptions\InvalidRequestException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\BadResponseException;
 
 trait Request
 {
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>
-     *
-     * @throws InvalidRequestException
      */
-    public function sendRequest(string $controller, string $action, array $params): array|InvalidRequestException
+    public function sendRequest(string $controller, string $action, array $params): array
     {
         $params['api_key'] = $this->apiKey;
         $params['controller'] = $controller;
@@ -27,8 +28,8 @@ trait Request
         return $this->parseResponse($response);
     }
 
-    /** @return array<string, mixed>|ClientException|ServerException|BadResponseException|JsonException */
-    public function parseResponse(ResponseInterface $response): array|ClientException|ServerException|BadResponseException|JsonException
+    /** @return array<string, mixed> */
+    public function parseResponse(ResponseInterface $response): array
     {
         $body = $response->getBody();
         $responseData = json_decode((string) $body, true, 512, JSON_THROW_ON_ERROR);
