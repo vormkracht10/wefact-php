@@ -28,7 +28,15 @@ trait Request
         return $this->parseResponse($response);
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>
+     * 
+     * @throws ClientException;
+     * @throws ServerException;
+     * @throws JsonException;
+     * @throws BadResponseException;
+     */
     public function parseResponse(ResponseInterface $response): array
     {
         $body = $response->getBody();
