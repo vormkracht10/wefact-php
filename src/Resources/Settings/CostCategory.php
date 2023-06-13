@@ -2,14 +2,14 @@
 
 namespace Vormkracht10\WeFact\Resources\Settings;
 
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use JsonException;
 use Vormkracht10\WeFact\Enums\Action;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 use Vormkracht10\WeFact\Resources\Resource;
 use Vormkracht10\WeFact\Traits\Request;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
-use \JsonException;
 
 class CostCategory extends Resource
 {

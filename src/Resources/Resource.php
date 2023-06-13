@@ -3,13 +3,13 @@
 namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
-use \JsonException;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
+use JsonException;
 use Vormkracht10\WeFact\Enums\Action;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 use Vormkracht10\WeFact\Traits\Request;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
 
 abstract class Resource
 {

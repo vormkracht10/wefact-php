@@ -3,11 +3,11 @@
 namespace Vormkracht10\WeFact\Resources;
 
 use GuzzleHttp\Client;
-use \JsonException;
-use Vormkracht10\WeFact\Enums\Invoice\InvoiceAction;
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
+use JsonException;
+use Vormkracht10\WeFact\Enums\Invoice\InvoiceAction;
 
 class Invoice extends Resource
 {
