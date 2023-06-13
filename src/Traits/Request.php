@@ -27,7 +27,7 @@ trait Request
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>
-     * 
+     *
      * @throws ClientException;
      * @throws ServerException;
      * @throws JsonException;
