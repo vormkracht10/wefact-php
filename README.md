@@ -112,7 +112,7 @@ composer require vormkracht10/wefact-php
 Then you can use the package like this:
 
 ```php
-$weFact = new Vormkracht10\WeFact('your-api-key');
+$weFact = new \Vormkracht10\WeFact\WeFact('your-api-key');
 
 $invoices = $weFact->invoices()->list();
 ```
