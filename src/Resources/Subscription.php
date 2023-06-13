@@ -2,12 +2,12 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
-use \JsonException;
-use Vormkracht10\WeFact\Enums\Subscription\SubscriptionAction;
-use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
+use JsonException;
+use Vormkracht10\WeFact\Enums\Subscription\SubscriptionAction;
+use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
 
 class Subscription extends Resource
 {
@@ -20,7 +20,7 @@ class Subscription extends Resource
 
     /**
      * @return array<string, mixed>
-     * 
+     *
      * @throws MethodNotAvailableException
      */
     public function delete(array $params = []): array

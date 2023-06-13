@@ -2,11 +2,7 @@
 
 namespace Vormkracht10\WeFact\Traits;
 
-use \JsonException;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
 
 trait Request
 {
