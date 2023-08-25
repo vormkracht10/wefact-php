@@ -41,8 +41,6 @@ abstract class Resource
     }
 
     /**
-     * @param  int  $offset
-     * @param  int  $perPage
      * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
      * @throws ClientException|ServerException|BadResponseException|JsonException
@@ -56,7 +54,7 @@ abstract class Resource
         $data = [];
 
         // TODO: This is a hacky way to get the plural resource name.
-        $pluralResourceName = $this->getResourceName() . 's';
+        $pluralResourceName = $this->getResourceName().'s';
 
         $result = $this->sendRequest(
             controller: $this->getResourceName(),
@@ -67,7 +65,7 @@ abstract class Resource
             ]
         );
 
-        foreach($result[$pluralResourceName] as $index => $item) {
+        foreach ($result[$pluralResourceName] as $index => $item) {
             $calls++;
 
             if ($calls % $limitPerSecond == 0) {
