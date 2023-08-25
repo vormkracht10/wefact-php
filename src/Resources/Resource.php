@@ -41,6 +41,57 @@ abstract class Resource
     }
 
     /**
+     * @param  int  $offset
+     * @param  int  $perPage
+     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
+     *
+     * @throws ClientException|ServerException|BadResponseException|JsonException
+     */
+    public function listAll(int $offset = 0, int $perPage = 1000)
+    {
+        // Rate limit the requests to prevent IP blocking.
+        $limitPerSecond = 300 / 60; // Per minute / seconds
+        $calls = 1;
+
+        $data = [];
+
+        // TODO: This is a hacky way to get the plural resource name.
+        $pluralResourceName = $this->getResourceName() . 's';
+
+        $result = $this->sendRequest(
+            controller: $this->getResourceName(),
+            action: Action::LIST->value,
+            params: [
+                'limit' => $perPage,
+                'offset' => $offset,
+            ]
+        );
+
+        foreach($result[$pluralResourceName] as $index => $item) {
+            $calls++;
+
+            if ($calls % $limitPerSecond == 0) {
+                sleep(1);
+            }
+
+            $resultItem = $this->show([
+                'Identifier' => $item['Identifier'],
+            ]);
+
+            $result[$pluralResourceName][$index] = $resultItem[$pluralResourceName];
+        }
+
+        $data = array_merge($data, $result[$pluralResourceName] ?? []);
+
+        if ($result['currentresults'] >= $perPage) {
+            $offset += $perPage;
+            $data = array_merge($data, $this->listAll($offset, $perPage));
+        }
+
+        return $data;
+    }
+
+    /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
