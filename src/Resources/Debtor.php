@@ -15,7 +15,7 @@ class Debtor extends Resource
 
     public function getPluralResourceName(): string
     {
-        return self::CONTROLLER_NAME . 's';
+        return self::CONTROLLER_NAME.'s';
     }
 
     /**
