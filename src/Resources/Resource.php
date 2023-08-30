@@ -2,14 +2,15 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
+use Exception;
+use JsonException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\BadResponseException;
+use Vormkracht10\WeFact\Enums\Action;
+use Vormkracht10\WeFact\Traits\Request;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use JsonException;
-use Vormkracht10\WeFact\Enums\Action;
+use GuzzleHttp\Exception\BadResponseException;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
-use Vormkracht10\WeFact\Traits\Request;
 
 abstract class Resource
 {
@@ -41,11 +42,11 @@ abstract class Resource
     }
 
     /**
-     * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
-     *
-     * @throws ClientException|ServerException|BadResponseException|JsonException
-     */
-    public function listAll(int $offset = 0, int $perPage = 1000)
+    * @return array<string, mixed>
+    *
+    * @throws ClientException|ServerException|BadResponseException|JsonException
+    */
+    public function listAll(int $offset = 0, int $perPage = 1000): array
     {
         // Rate limit the requests to prevent IP blocking.
         $limitPerSecond = 300 / 60; // Per minute / seconds
@@ -55,14 +56,15 @@ abstract class Resource
 
         $pluralResourceName = $this->getPluralResourceName();
 
-        $result = $this->sendRequest(
-            controller: $this->getResourceName(),
-            action: Action::LIST->value,
-            params: [
-                'limit' => $perPage,
-                'offset' => $offset,
-            ]
-        );
+        try {
+            $result = $this->list(params: [
+                    'limit' => $perPage,
+                    'offset' => $offset,
+                ]
+            );
+        } catch (Exception $e) {
+            throw $e;
+        }
 
         foreach ($result[$pluralResourceName] as $index => $item) {
             $calls++;
@@ -71,11 +73,20 @@ abstract class Resource
                 sleep(1);
             }
 
-            $resultItem = $this->show([
-                'Identifier' => $item['Identifier'],
-            ]);
+            try {
+                $resultItem = $this->show([
+                    'Identifier' => $item['Identifier'],
+                ]);
+            } catch (Exception $e) {
+                throw $e;
+            }
 
-            $result[$pluralResourceName][$index] = $resultItem[$this->getResourceName()];
+            if (is_array($resultItem) && isset($resultItem[$this->getResourceName()])) {
+                $result[$pluralResourceName][$index] = $resultItem[$this->getResourceName()];
+            } else {
+                // Handle the case where $resultItem is not an array or does not contain the expected resource name.
+                continue;
+            }
         }
 
         $data = array_merge($data, $result[$pluralResourceName] ?? []);
