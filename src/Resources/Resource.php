@@ -75,7 +75,7 @@ abstract class Resource
                 'Identifier' => $item['Identifier'],
             ]);
 
-            $result[$pluralResourceName][$index] = $resultItem[$pluralResourceName];
+            $result[$pluralResourceName][$index] = $resultItem[$this->getResourceName()];
         }
 
         $data = array_merge($data, $result[$pluralResourceName] ?? []);
