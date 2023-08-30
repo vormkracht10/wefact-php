@@ -2,6 +2,7 @@
 
 namespace Vormkracht10\WeFact\Resources;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ClientException;
@@ -38,6 +39,64 @@ abstract class Resource
             action: Action::LIST->value,
             params: $params
         );
+    }
+
+    /**
+     * @return array<string, mixed>
+     *
+     * @throws ClientException|ServerException|BadResponseException|JsonException
+     */
+    public function listAll(int $offset = 0, int $perPage = 1000): array
+    {
+        // Rate limit the requests to prevent IP blocking.
+        $limitPerSecond = 300 / 60; // Per minute / seconds
+        $calls = 1;
+
+        $data = [];
+
+        $pluralResourceName = $this->getPluralResourceName();
+
+        try {
+            $result = $this->list(params: [
+                'limit' => $perPage,
+                'offset' => $offset,
+            ]
+            );
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        foreach ($result[$pluralResourceName] as $index => $item) {
+            $calls++;
+
+            if ($calls % $limitPerSecond == 0) {
+                sleep(1);
+            }
+
+            try {
+                $resultItem = $this->show([
+                    'Identifier' => $item['Identifier'],
+                ]);
+            } catch (Exception $e) {
+                throw $e;
+            }
+
+            if (is_array($resultItem) && isset($resultItem[$this->getResourceName()])) {
+                $result[$pluralResourceName][$index] = $resultItem[$this->getResourceName()];
+            } else {
+                // Handle the case where $resultItem is not an array or does not contain the expected resource name.
+                continue;
+            }
+        }
+
+        $data = array_merge($data, $result[$pluralResourceName] ?? []);
+
+        if ($result['currentresults'] >= $perPage) {
+            $offset += $perPage;
+            $data = array_merge($data, $this->listAll($offset, $perPage));
+        }
+
+        return $data;
     }
 
     /**
@@ -109,4 +168,6 @@ abstract class Resource
     }
 
     abstract public function getResourceName(): string;
+
+    abstract public function getPluralResourceName(): string;
 }

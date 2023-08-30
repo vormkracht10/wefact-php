@@ -15,11 +15,16 @@ class CostCategory extends Resource
 {
     use Request;
 
-    final public const CONTROLLER_NAME = 'settings';
+    final public const CONTROLLER_NAME = 'costcategory';
 
     public function getResourceName(): string
     {
         return self::CONTROLLER_NAME;
+    }
+
+    public function getPluralResourceName(): string
+    {
+        return 'costcategories';
     }
 
     /**
