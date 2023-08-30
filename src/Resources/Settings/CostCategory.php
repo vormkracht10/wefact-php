@@ -26,7 +26,7 @@ class CostCategory extends Resource
     {
         return 'costcategories';
     }
-    
+
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>
