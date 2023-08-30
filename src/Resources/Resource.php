@@ -41,8 +41,6 @@ abstract class Resource
     }
 
     /**
-     * @param  int  $offset
-     * @param  int  $perPage
      * @return array<string, mixed>|MethodNotAvailableException|ClientException|ServerException|BadResponseException|JsonException
      *
      * @throws ClientException|ServerException|BadResponseException|JsonException
@@ -66,7 +64,7 @@ abstract class Resource
             ]
         );
 
-        foreach($result[$pluralResourceName] as $index => $item) {
+        foreach ($result[$pluralResourceName] as $index => $item) {
             $calls++;
 
             if ($calls % $limitPerSecond == 0) {
