@@ -3,14 +3,14 @@
 namespace Vormkracht10\WeFact\Resources;
 
 use Exception;
-use JsonException;
 use GuzzleHttp\Client;
-use Vormkracht10\WeFact\Enums\Action;
-use Vormkracht10\WeFact\Traits\Request;
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
+use JsonException;
+use Vormkracht10\WeFact\Enums\Action;
 use Vormkracht10\WeFact\Exceptions\MethodNotAvailableException;
+use Vormkracht10\WeFact\Traits\Request;
 
 abstract class Resource
 {
@@ -42,10 +42,10 @@ abstract class Resource
     }
 
     /**
-    * @return array<string, mixed>
-    *
-    * @throws ClientException|ServerException|BadResponseException|JsonException
-    */
+     * @return array<string, mixed>
+     *
+     * @throws ClientException|ServerException|BadResponseException|JsonException
+     */
     public function listAll(int $offset = 0, int $perPage = 1000): array
     {
         // Rate limit the requests to prevent IP blocking.
@@ -58,9 +58,9 @@ abstract class Resource
 
         try {
             $result = $this->list(params: [
-                    'limit' => $perPage,
-                    'offset' => $offset,
-                ]
+                'limit' => $perPage,
+                'offset' => $offset,
+            ]
             );
         } catch (Exception $e) {
             throw $e;
