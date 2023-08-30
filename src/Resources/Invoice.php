@@ -26,6 +26,11 @@ class Invoice extends Resource
         return self::CONTROLLER_NAME;
     }
 
+    public function getPluralResourceName(): string
+    {
+        return self::CONTROLLER_NAME . 's';
+    }
+
     /**
      * @param  array<string, mixed>  $params
      * @return array<string, mixed>

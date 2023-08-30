@@ -10,4 +10,9 @@ class Product extends Resource
     {
         return self::CONTROLLER_NAME;
     }
+
+    public function getPluralResourceName(): string
+    {
+        return self::CONTROLLER_NAME . 's';
+    }
 }

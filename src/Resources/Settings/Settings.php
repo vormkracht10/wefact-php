@@ -18,6 +18,11 @@ class Settings extends Resource
         return self::CONTROLLER_NAME;
     }
 
+    public function getPluralResourceName(): string
+    {
+        return self::CONTROLLER_NAME;
+    }
+
     /**
      * @return array<mixed, string>
      */

@@ -55,8 +55,7 @@ abstract class Resource
 
         $data = [];
 
-        // TODO: This is a hacky way to get the plural resource name.
-        $pluralResourceName = $this->getResourceName() . 's';
+        $pluralResourceName = $this->getPluralResourceName();
 
         $result = $this->sendRequest(
             controller: $this->getResourceName(),
@@ -160,4 +159,6 @@ abstract class Resource
     }
 
     abstract public function getResourceName(): string;
+
+    abstract public function getPluralResourceName(): string;
 }
