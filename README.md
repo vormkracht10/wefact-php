@@ -115,6 +115,9 @@ Then you can use the package like this:
 $weFact = new \Vormkracht10\WeFact\WeFact('your-api-key');
 
 $response = $weFact->invoices()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->invoices()->listAll();
+
 if (isset($response['invoices'])) {
   print_r($response['invoices']);
 }
@@ -128,6 +131,9 @@ if (isset($response['invoices'])) {
 
 ```php
 $response = $weFact->creditors()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->creditors()->listAll();
+
 if (isset($response['creditors'])) {
   print_r($response['creditors']);
 }
@@ -188,6 +194,8 @@ $weFact->creditors()->delete(['CreditorCode' => $creditorCode]);
 
 ```php
 $weFact->creditInvoices()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->creditInvoices()->listAll();
 ```
 
 #### Create credit invoice
@@ -244,6 +252,8 @@ $weFact->creditInvoices()->delete(['CreditInvoiceCode' => $creditInvoiceCode]);
 
 ```php
 $weFact->debtors()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->debtors()->listAll();
 ```
 
 You can also search for debtors:
@@ -343,6 +353,8 @@ $weFact->groups()->delete(['Identifier' => $groupId]);
 
 ```php
 $weFact->invoices()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->invoices()->listAll();
 ```
 
 #### Create invoice
@@ -630,6 +642,8 @@ $weFact->invoices()->downloadAttachment([
 
 ```php
 $weFact->products()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->products()->listAll();
 ```
 
 #### Create product
@@ -689,6 +703,8 @@ $weFact->settings()->list();
 
 ```php
 $weFact->costCategories()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->costCategories()->listAll();
 ```
 
 #### Create cost category
@@ -733,6 +749,8 @@ $weFact->costCategories()->delete(['Identifier' => $costCategoryId]);
 
 ```php
 $weFact->subscriptions()->list();
+// or use listAll to call the show method for each item
+$response = $weFact->subscriptions()->listAll();
 ```
 
 #### Create subscription
